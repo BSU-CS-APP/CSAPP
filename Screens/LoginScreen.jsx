@@ -24,12 +24,14 @@ export default function LoginScreen() {
     <Screen style={styles.container}>
       <Image 
       style={styles.logo}
-      source={require("../assets/Bowielogo.png")}/>
+      source={require("../assets/bowiesign.jpeg")}/>
        <AppForm initialValues={{email:"", password:""}}
-        onSubmit={values=>console.log(values)}
+        onSubmit={values=>alert(JSON.stringify(values))}
         validationSchema={validationSchema}
        >
-                <AppFormField
+        <AppText style={{color:"#60615c",fontSize:20, marginLeft:5}}>WELCOME BACK</AppText>
+        <AppText style={{color:"#fc9003", fontSize:30, fontWeight:"bold", marginLeft:5}}>Account Login</AppText>
+      <AppFormField
        icon="email"
        name="email"
        placeholder="email"
@@ -48,7 +50,7 @@ export default function LoginScreen() {
        secureTextEntry={true}
        textContentType="password"
        />
-       <SubmitButton title="Login" />
+       <SubmitButton title="Register" />
        </AppForm>
      </Screen>
   );
@@ -60,10 +62,10 @@ export default function LoginScreen() {
   },
     
     logo:{
-      width:80,
-      height:80,
+      width:"100%",
+      height:230,
       alignSelf: 'center', 
-      marginTop:30,
-      marginBottom:20,
+      marginTop:5,
+      marginBottom:10,
     }
  })

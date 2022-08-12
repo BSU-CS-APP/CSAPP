@@ -21,5 +21,3 @@ const AppForm = ({initialValues, validationSchema, onSubmit, children}) => {
 }
 
 export default AppForm
-
-const styles = StyleSheet.create({})
