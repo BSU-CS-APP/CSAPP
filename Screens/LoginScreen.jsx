@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text , StyleSheet, Image, Platform, ImageBackground} from "react-native"
+import { View, Text , StyleSheet, Image, Platform, ImageBackground, TextInput, Pressable} from "react-native"
 import AppTextInput from '../Component/AppTextInput';
 import Screen from '../Component/Screen';
 import AppButton from "../Component/AppButton"
@@ -10,6 +10,7 @@ import ErrorMessage from '../Component/ErrorMessage';
 import AppFormField from '../Component/AppFormField';
 import SubmitButton from '../Component/SubmitButton';
 import AppForm from '../Component/AppForm';
+import AppLogo from '../Component/AppLogo';
 
 
  const validationSchema=Yup.object().shape({
@@ -21,51 +22,37 @@ import AppForm from '../Component/AppForm';
 export default function LoginScreen() {
 
   return (
-    <Screen style={styles.container}>
-      <Image 
-      style={styles.logo}
-      source={require("../assets/bowiesign.jpeg")}/>
-       <AppForm initialValues={{email:"", password:""}}
-        onSubmit={values=>alert(JSON.stringify(values))}
-        validationSchema={validationSchema}
-       >
-        <AppText style={{color:"#60615c",fontSize:20, marginLeft:5}}>WELCOME BACK</AppText>
-        <AppText style={{color:"#fc9003", fontSize:30, fontWeight:"bold", marginLeft:5}}>Account Login</AppText>
-      <AppFormField
-       icon="email"
-       name="email"
-       placeholder="email"
-       autoCorrect={false}
-       keyboardType="email-address"
-       autoCapitalize="none"
-       textContentType="emailAddress"
-       />
-       <AppFormField
-       icon="lock"
-       placeholder="Password"
-       autoCorrect={false}
-      name="password"
-       keyboardType="email-address"
-       autoCapitalize="none"
-       secureTextEntry={true}
-       textContentType="password"
-       />
-       <SubmitButton title="Register" />
-       </AppForm>
-     </Screen>
+   
+      <View style={styles.background}>
+       <AppLogo title="Login"/>
+       <AppTextInput placeholderTextColor="white" placeholder="Email Address"/>
+       <AppTextInput placeholderTextColor="white" placeholder="Password" secureTextEntry/>
+       
+       <View style={styles.loginButton}>
+       <AppButton title="Register" color="bowieyellow" style={styles.loginContainer} />
+       <View style={{flexDirection:"row", alignSelf:"center",}}>
+       <AppText style={{color:"white",  fontWeight:"bold"}}>Dont't have an Account?</AppText>
+       <Pressable>
+        <Text style={{color:"white", marginTop:5, fontWeight:"bold"}}> Create Now</Text>
+       </Pressable>
+       </View>
+       </View>    
+      </View>
+      
+     
   );
 }
 
  const styles  =StyleSheet.create({
   container:{
-       padding:10
+       padding:10,
+       flex:1
   },
-    
-    logo:{
-      width:"100%",
-      height:230,
-      alignSelf: 'center', 
-      marginTop:5,
-      marginBottom:10,
-    }
+  background :{
+       backgroundColor:"#000",
+       flex:1
+  },  
+  loginButton:{
+    paddingTop:20
+  }
  })

@@ -3,7 +3,7 @@ export default{
     secondary:"#4ecdc4",
     black:"#000",
     white:"#fff",
-    bowieyellow:"#eb9834",
+    bowieyellow:"#f5b507",
     medium:"#6e6969",
     light:"#f8f4f4",
     danger:"#ff5252",
