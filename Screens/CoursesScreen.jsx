@@ -1,10 +1,11 @@
 import React from 'react';
+import {Text, View} from "react-native"
 
 function CoursesScreen(props) {
     return (
-        <div>
+        <View>
             <Text>Course screen</Text>
-        </div>
+        </View>
     );
 }
 

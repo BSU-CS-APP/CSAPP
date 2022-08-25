@@ -31,10 +31,10 @@ export default function RegisterScreen({navigation}) {
        <AppTextInput placeholderTextColor="white" placeholder="Password" secureTextEntry/>
        
        <View style={styles.loginButton}>
-       <AppButton title="Register" color="bowieyellow" style={styles.loginContainer} />
+       <AppButton onPress={()=>navigation.navigate("Login")} title="Register" color="bowieyellow" style={styles.loginContainer} />
        <View style={{flexDirection:"row", alignSelf:"center",}}>
        <AppText style={{color:"white",  fontWeight:"bold"}}>Already have an Account?</AppText>
-       <Pressable onPress={()=>navigation.navigate("Login")}>
+       <Pressable>
         <Text style={{color:"white", marginTop:5, fontWeight:"bold"}}> Login</Text>
        </Pressable>
        </View>

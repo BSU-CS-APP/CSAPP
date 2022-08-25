@@ -19,7 +19,7 @@ import AppLogo from '../Component/AppLogo';
  })
 
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
 
   return (
    
@@ -27,9 +27,8 @@ export default function LoginScreen() {
        <AppLogo title="Login"/>
        <AppTextInput placeholderTextColor="white" placeholder="Email Address"/>
        <AppTextInput placeholderTextColor="white" placeholder="Password" secureTextEntry/>
-       
        <View style={styles.loginButton}>
-       <AppButton title="Register" color="bowieyellow" style={styles.loginContainer} />
+       <AppButton title="Login" color="bowieyellow" style={styles.loginContainer} onPress={()=>navigation.navigate("Register")} />
        <View style={{flexDirection:"row", alignSelf:"center",}}>
        <AppText style={{color:"white",  fontWeight:"bold"}}>Dont't have an Account?</AppText>
        <Pressable>

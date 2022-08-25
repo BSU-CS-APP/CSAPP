@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import colors from "../Config/colors"
 import AppText from "./AppText"
+import {MaterialCommunityIcons, Entypo} from "@expo/vector-icons"
 
 export default function Card({title, subTitle,image}) {
     console.log(title, subTitle, image )
@@ -10,7 +11,7 @@ export default function Card({title, subTitle,image}) {
       <Image source={image} style={styles.image} />
       <View style={styles.detailsContainer}>
       <AppText style={styles.title}>{title}</AppText>
-      <AppText style={styles.subtitle}>{subTitle}</AppText>
+      <Entypo name="chevron-right" size={24} color="white" />
       </View>
      </View>
   );
@@ -18,20 +19,32 @@ export default function Card({title, subTitle,image}) {
 
 const styles = StyleSheet.create({
       card:{
-        borderRadius:15,
+        borderTopLeftRadius:15,
+        borderTopRightRadius:15,
         backgroundColor: colors.white,
         marginBottom:20,
         overflow: "hidden",
+        marginTop:15,
+        marginRight:15,
+        marginLeft:15,
+        backgroundColor:"#212020"
+
       },
       image:{
         width:"100%",
-        height:200
+        height:150
+         
       },
       detailsContainer:{
-         padding: 20
+         padding: 20,
+         flexDirection:"row",
+         justifyContent:"space-between",
       },
       title:{
-        marginBottom:7
+        marginBottom:5,
+        color:"white",
+        fontSize:18,
+        fontWeight:"900",
       },
       subtitle:{
         color:colors.secondary,

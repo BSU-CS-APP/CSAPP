@@ -1,16 +1,15 @@
+import 'react-native-gesture-handler';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import AppNavigation from "./Navigator/Navigation"
-import SignupScreen from './Screens/SignupScreen';
-import LoginScreen from "./Screens/LoginScreen"
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
+
 
 export default function App() {
   return (
-    <LoginScreen/>
-    //   <NavigationContainer>
-    //    <AppNavigation/>
-    // </NavigationContainer>
-    
+    <SafeAreaProvider>
+       <AppNavigation/> 
+       </SafeAreaProvider>
   )
 
   }

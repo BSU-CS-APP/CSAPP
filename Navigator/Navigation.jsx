@@ -1,98 +1,110 @@
-import { StyleSheet, Text, View } from 'react-native'
+
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Ionicons, MaterialCommunityIcons, FontAwesome5, AntDesign, MaterialIcons } from "@expo/vector-icons"
-
-
+import BookingScreen from "../Screens/BookingScreen"
+import CourseDetailscreen from "../Screens/CourseDetailScreen"
+import DetailScreen from "../Screens/DetailsScreen"
+import FacultyScreen from "../Screens/Faculty"
 import WelcomeScreen from "../Screens/WelcomeScreen"
+import TutorDetailScreen from "../Screens/TutorDetailScreen"
 import LoginScreen from "../Screens/LoginScreen"
+import {createNativeStackNavigator} from "@react-navigation/native-stack"
 import SignupScreen from "../Screens/SignupScreen"
-import AccountScreen from "../Screens/AccountScreen"
-import JobScreen from "../Screens/JobScreen"
-import EventScreen from "../Screens/EventScreen"
-import CoursesScreen from "../Screens/CoursesScreen"
-import Clubscreen from "../Screens/ClubScreen"
+import { NavigationContainer } from '@react-navigation/native';
+import {createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,} from "@react-navigation/drawer"
 
+  const Drawer = createDrawerNavigator();
+   const Stack = createNativeStackNavigator()
 
-
-
-const Stack = createNativeStackNavigator();
-const AccountStack = createNativeStackNavigator();
- const AppTab = createBottomTabNavigator();
- const JobStack = createNativeStackNavigator()
- const EventStack = createNativeStackNavigator();
- const CourseStack = createNativeStackNavigator();
-
-
- const WelcomeStackScreen =()=>(
-  <Stack.Navigator>
-      <Stack.Screen name="Homes" component={WelcomeScreen} options={{
-        headerShown:false
+   const AuthNavigator =()=>(
+     <Stack.Navigator>
+      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
+         headerShown:false
       }}/>
-      <Stack.Screen name="Login" component={LoginScreen}  />
-      <Stack.Screen name="Register" component={SignupScreen} />
-      </Stack.Navigator>
- )
- const AccountStackScreen =()=>(
-  <Stack.Navigator>
-      <AccountStack.Screen name="Account" component={AccountScreen} options={{
-        headerShown:false
-      }}/>
-      
-      </Stack.Navigator>
- )
+      <Stack.Screen name="Login" component={LoginScreen}options={{
 
- const CoursesStackScreen =()=>(
-  <Stack.Navigator>
-      <CourseStack.Screen name="Course" component={CoursesScreen} options={{
-        headerShown:false
-      }}/>
-      
-      </Stack.Navigator>
- )
+headerShown:false
+}}/>
+      <Stack.Screen name="Register" component={SignupScreen} options={{
 
- const EventStackScreen =()=>(
-  <Stack.Navigator>
-      <EventStack.Screen name="Event" component={EventSscreen} options={{
-        headerShown:false
-      }}/>
-      
-      </Stack.Navigator>
- )
+headerShown:false
+}}/>
+ <Stack.Screen name="Tutor" component={TutorDetailScreen}/>
+       <Stack.Screen name="Faculty" component={FacultyScreen}/>
+     </Stack.Navigator>
+   )
 
- const JobStackScreen =()=>(
-  <Stack.Navigator>
-      <JobStack.Screen name="Jobs" component={JobScreen} options={{
-        headerShown:false
-      }}/>
-      
-      </Stack.Navigator>
- )
 
- 
 
-const AppNavigation = () => {
+
+
+
+
+const CustomDrawerContent=(props)=>{
   return (
-    <AppTab.Navigator>
-      
-      <AppTab.Screen name ="Job" component={JobStackScreen} options={{
-        tabBarIcon:()=><Ionicons name="search-circle-sharp" size={24} color="black" />
-      }}/>
-      <AppTab.Screen name ="Accounts" component={CoursesStackScreen} options={{
-        tabBarIcon:()=><Ionicons name="person-add-sharp" size={24} color="black" />
-      }}/>
-      <AppTab.Screen name ="Courses" component={CoursesStackScreen} options={{
-        tabBarIcon:()=><MaterialIcons name="quick-contacts-mail" size={24} color="black" />
-      }}/>
-      <AppTab.Screen name ="Events" component={EventStackScreen} options={{
-        tabBarIcon:()=><MaterialIcons name="quick-contacts-mail" size={24} color="black" />
-      }}/>
-      
-    </AppTab.Navigator>
+      <ScrollView style={styles.container}>
+          <View>
+              <View style={styles.drawerHeader}>
+                  <Text style={styles.drawerHeaderText}>Drawer</Text>
+              </View>
+          </View>
+          <DrawerContentScrollView {...props}>
+              <DrawerItemList {...props}/>
+               <DrawerItem
+                label="close drawer"
+                onPress={()=>props.navigation.closeDrawer()}
+               />
+          </DrawerContentScrollView>
+      </ScrollView>
   )
 }
 
+
+// 
+
+const MyDrawer=()=>{
+  return (
+    
+     <Drawer.Navigator backBehavior="history" options={{drawerType:"slide"}} drawerContent={props=><CustomDrawerContent{...props}/>} >
+       <Drawer.Screen name="Home" component={AuthNavigator}  options={{headerStatusBarHeight:0}}/>
+     </Drawer.Navigator>
+   
+  )
+ }
+
+ const AppNavigation=()=>{
+  return(
+  
+      <NavigationContainer>
+      <MyDrawer/>
+      </NavigationContainer>
+      
+  )
+ }
+
+ const styles = StyleSheet.create({
+  container:{
+      flex:1,
+      backgroundColor:"black"
+  },
+  drawerHeader:{
+      backgroundColor:"black",
+      height:150,
+      alignItems: "center",
+      justifyContent: "center",
+      flex:1,
+      flexDirection:"row"
+  },
+  drawerHeaderText:{
+      color:"white",
+      fontSize:24,
+      fontWeight:"bold"
+  }
+})
+
 export default AppNavigation
 
-const styles = StyleSheet.create({})
