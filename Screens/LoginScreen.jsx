@@ -28,7 +28,7 @@ export default function LoginScreen({navigation}) {
        <AppTextInput placeholderTextColor="white" placeholder="Email Address"/>
        <AppTextInput placeholderTextColor="white" placeholder="Password" secureTextEntry/>
        <View style={styles.loginButton}>
-       <AppButton title="Login" color="bowieyellow" style={styles.loginContainer} onPress={()=>navigation.navigate("Register")} />
+       <AppButton title="Login" color="bowieyellow" style={styles.loginContainer} onPress={()=>navigation.navigate("Detail")} />
        <View style={{flexDirection:"row", alignSelf:"center",}}>
        <AppText style={{color:"white",  fontWeight:"bold"}}>Dont't have an Account?</AppText>
        <Pressable>

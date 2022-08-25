@@ -35,6 +35,7 @@ headerShown:false
 }}/>
  <Stack.Screen name="Tutor" component={TutorDetailScreen}/>
        <Stack.Screen name="Faculty" component={FacultyScreen}/>
+       <Stack.Screen name="Detail" options={{headerShown:false}} component={DetailScreen}/>
      </Stack.Navigator>
    )
 
@@ -78,11 +79,9 @@ const MyDrawer=()=>{
 
  const AppNavigation=()=>{
   return(
-  
       <NavigationContainer>
       <MyDrawer/>
       </NavigationContainer>
-      
   )
  }
 

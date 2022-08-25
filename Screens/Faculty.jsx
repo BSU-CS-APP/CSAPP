@@ -11,7 +11,7 @@ import {MaterialCommunityIcons, Entypo} from "@expo/vector-icons"
  const image4= require("../assets/alumjni.jpg")
 
 
-export default function TutorScreen() {
+export default function TutorScreen({navigation}) {
   return (
     <ImageBackground style={{backgroundColor:"#000",  height:"100%"}}>
       <View style={{alignItems:"flex-end",flexDirection:"row", justifyContent:"space-between" ,marginRight:10, marginTop:30, marginBottom:10}}>
