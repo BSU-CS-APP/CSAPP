@@ -4,10 +4,10 @@ import data from "../data/Courses"
 import {MaterialCommunityIcons} from "@expo/vector-icons"
 
 
-const categoryTutoe = ({name}) => {
+const categoryTutoe = ({name, onPress}) => {
   return (
     <View style={styles.gridItem}>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={onPress}>
         <View style={styles.innerContainer}>
             <MaterialCommunityIcons size={24} name="pen" color="#cc6012"/>
         <Text style={styles.name}>{name}</Text>

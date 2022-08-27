@@ -17,11 +17,11 @@ import data from "../data/Courses"
 
   
 
-export default function TutorScreen() {
+export default function TutorScreen({navigation}) {
 
  const renderCategoryBooking =(itemData)=>{
   return(
-    <BookingCategory name={itemData.item.name} />
+    <BookingCategory onPress={()=>navigation.navigate("Detail")} name={itemData.item.name} />
   )
  }
 
@@ -29,11 +29,11 @@ export default function TutorScreen() {
     
     <ImageBackground style={{backgroundColor:"#000",  height:"100%"}}>
       <View style={{alignItems:"flex-end",flexDirection:"row", justifyContent:"space-between" ,marginRight:10, marginTop:30, marginBottom:10}}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate("Tutor")}>
       <Entypo name="chevron-left" size={24} color="#eba90e" />
       </TouchableOpacity>
       <AppText style={styles.text}>Book A Tutor</AppText>
-      <TouchableOpacity>
+      <TouchableOpacity >
       <Entypo name="menu" size={24} color="#eba90e" />
       </TouchableOpacity>
       </View>

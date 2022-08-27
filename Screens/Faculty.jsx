@@ -15,10 +15,10 @@ export default function TutorScreen({navigation}) {
   return (
     <ImageBackground style={{backgroundColor:"#000",  height:"100%"}}>
       <View style={{alignItems:"flex-end",flexDirection:"row", justifyContent:"space-between" ,marginRight:10, marginTop:30, marginBottom:10}}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate("Tutor")}>
       <Entypo name="chevron-left" size={24} color="#eba90e" />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress ={()=>navigation.toggleDrawer()}>
       <Entypo name="menu" size={24} color="#eba90e" />
       </TouchableOpacity>
       </View>
@@ -28,9 +28,9 @@ export default function TutorScreen({navigation}) {
       </ImageBackground>
       <View style={{ borderBottomWidth:4, marginTop:-209, marginLeft:15, marginRight:15, borderBottomColor:"#eba90e"}}/>
       <ScrollView>
-      <Card  image={image} title="Book A Tutor"/>
-      <Card  image={image1} title="Grade Enhancement Program"/>
-      <Card  image={image2} title="Grade Enhancement Program"/>
+      <Card  image={image} title="Book A Tutor" onPress={()=>navigation.navigate("Book")}/>
+      <Card  image={image1} title="Grade Enhancement Program" onPress={()=>navigation.navigate("Book")}/>
+      <Card  image={image2} title="Grade Enhancement Program" onPress={()=>navigation.navigate("Book")}/>
       </ScrollView>
      </ImageBackground>
      

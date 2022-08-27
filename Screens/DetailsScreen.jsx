@@ -11,10 +11,10 @@ import {MaterialCommunityIcons, Entypo} from "@expo/vector-icons"
  const image4= require("../assets/alumjni.jpg")
 
 
-export default function DetailScreen() {
+export default function DetailScreen({navigation}) {
   return (
     <ImageBackground style={{backgroundColor:"#000", height:"100%"}}>
-      <TouchableOpacity style={{alignItems:"flex-end", marginRight:10, marginTop:80}}>
+      <TouchableOpacity onPress={()=>navigation.toggleDrawer()}  style={{alignItems:"flex-end", marginRight:10, marginTop:80}}>
       <Entypo name="menu" size={24} color="#eba90e" />
       </TouchableOpacity>
       <View style={{ borderBottomWidth:5, marginTop:50, borderBottomColor:"#eba90e"}}/>
@@ -25,12 +25,12 @@ export default function DetailScreen() {
       </ImageBackground>
       <View style={{ borderBottomWidth:4, marginTop:-210, borderBottomColor:"#eba90e"}}/>
       <ScrollView>
-      <Card  image={image} title="Learning and Tutoring"/>
-      <Card  image={image1} title="Events and Announcements"/>
-      <Card  image={image2} title="Internship Oppurtunities"/>
-      <Card  image={image3} title="Research Labs"/>
-      <Card  image={image3} title="Research Labs"/>
-      <Card  image={image4} title="Alumni"/>
+      <Card  image={image} title="Learning and Tutoring" onPress={()=>navigation.navigate("Faculty")} />
+      <Card  image={image1} title="Events and Announcements" onPress={()=>navigation.navigate("Faculty")}/>
+      <Card  image={image2} title="Internship Oppurtunities" onPress={()=>navigation.navigate("Faculty")} />
+      <Card  image={image3} title="Research Labs" onPress={()=>navigation.navigate("Faculty")}/>
+      <Card  image={image3} title="Research Labs" onPress={()=>navigation.navigate("Faculty")}/>
+      <Card  image={image4} title="Alumni" onPress={()=>navigation.navigate("Faculty")}/>
       </ScrollView>
      </ImageBackground>
      
